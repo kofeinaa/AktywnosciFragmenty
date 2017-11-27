@@ -1,12 +1,13 @@
 package com.example.wigdis.aktywnosci;
 
+import android.net.Uri;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.TextView;
 
-public class CycleActivity extends AppCompatActivity {
+public class CycleActivity extends AppCompatActivity
+        implements ButtonFragment.OnFragmentInteractionListener {
 
     private static final String WELCOME_MESSAGE = "Hello my friend";
 
@@ -17,12 +18,14 @@ public class CycleActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_cycle);
-
-        // find item, set welcome text, set state
+        setContentView(R.layout.main_fragment_layout);
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        ButtonFragment fragment = new ButtonFragment();
+
+        fragmentTransaction.add(R.id.fragment_container, fragment);
+        fragmentTransaction.commit();
     }
 
     /**
@@ -56,8 +59,6 @@ public class CycleActivity extends AppCompatActivity {
     @Override
     protected void onRestart() {
         super.onRestart();
-
-        // Call invalidate() method on textView object to force repainting.
     }
 
     /**
@@ -75,5 +76,15 @@ public class CycleActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+    }
+
+    @Override
+    public void onFragmentInteraction(Uri uri) {
+
+    }
+
+    @Override
+    public void onPointerCaptureChanged(boolean hasCapture) {
+
     }
 }
