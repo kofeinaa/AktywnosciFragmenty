@@ -9,6 +9,7 @@ import android.widget.TextView;
 public class CycleActivity extends AppCompatActivity {
 
     private static final String WELCOME_MESSAGE = "Hello my friend";
+    private static int state;
 
     /**
      * Basic application startup logic.
@@ -18,12 +19,15 @@ public class CycleActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cycle);
+        state = 0;
 
-        // find item, set welcome text, set state
+        TextView tv1 = (TextView)findViewById(R.id.textView);
+        tv1.setText(WELCOME_MESSAGE);
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
     }
+
 
     /**
      * Activity visible to the user. App initialize the code that maintains the UI.
@@ -32,6 +36,7 @@ public class CycleActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
     }
+
 
     /**
      * This is the state in which the app interacts with the user.
@@ -56,9 +61,13 @@ public class CycleActivity extends AppCompatActivity {
     @Override
     protected void onRestart() {
         super.onRestart();
+        ++state;
 
-        // Call invalidate() method on textView object to force repainting.
+        TextView tv1 = (TextView)findViewById(R.id.textView);
+        tv1.setText(String.valueOf(state));
+        tv1.invalidate();
     }
+
 
     /**
      * When activity is no longer visible for the user.
@@ -68,6 +77,7 @@ public class CycleActivity extends AppCompatActivity {
         super.onStop();
     }
 
+
     /**
      * Final call that activity receives.
      * Should release all of the resources that haven't been released yet.
@@ -75,5 +85,6 @@ public class CycleActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        state = 0;
     }
 }
