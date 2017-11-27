@@ -1,5 +1,7 @@
 package com.example.wigdis.aktywnosci;
 
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
@@ -18,6 +20,9 @@ public class CycleActivity extends AppCompatActivity {
         setContentView(R.layout.activity_cycle);
 
         // find item, set welcome text, set state
+
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
     }
 
     /**
