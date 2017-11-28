@@ -7,7 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 public class CycleActivity extends AppCompatActivity
-        implements ButtonFragment.OnFragmentInteractionListener {
+        implements PlusOneFragment.OnFragmentInteractionListener {
 
     private static final String WELCOME_MESSAGE = "Hello my friend";
 
@@ -22,7 +22,7 @@ public class CycleActivity extends AppCompatActivity
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        ButtonFragment fragment = new ButtonFragment();
+        PlusOneFragment fragment = new PlusOneFragment();
 
         fragmentTransaction.add(R.id.fragment_container, fragment);
         fragmentTransaction.commit();
